@@ -1,0 +1,20 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Todo from "../components/Todo.astro";
+
+let todos = [{ id: "1", task: "Explore Astro", completed: false }];
+
+// if (Astro.request.method == "POST") {
+//   const data = Astro.locals.data;
+//   todos = [...todos, { id: "2", task: data.get("task")?.toString()!, completed: false }];
+// }
+---
+
+<Layout>
+  <form hx-post="/">
+    <ul>
+      {todos.map((item) => <Todo {...item} />)}
+    </ul>
+    <input type="text" /><button type="submit">Add</button>
+  </form>
+</Layout>

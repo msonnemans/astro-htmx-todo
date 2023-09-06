@@ -1,0 +1,25 @@
+---
+//import { ViewTransitions } from "astro:transitions";
+---
+
+{
+  (
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta
+          name="description"
+          content="Todo app written in Astro + HTMX, also includes tailwind and clerk. Deployable on Cloudflare Pages."
+        />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Astro + HTMX Todo</title>
+        <script src="https://unpkg.com/htmx.org@1.9.5" />
+      </head>
+      <body>
+        <slot />
+      </body>
+    </html>
+  )
+}

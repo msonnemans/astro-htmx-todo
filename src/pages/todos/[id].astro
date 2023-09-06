@@ -1,0 +1,13 @@
+---
+import Todo from "../../components/Todo.astro";
+const { id } = Astro.params;
+
+let completed = true;
+
+if (Astro.request.method == "PATCH") {
+  const data = Astro.locals.data;
+  completed = data.get("completed") == "on";
+}
+---
+
+<Todo id={id!} completed={completed} task="Hi" />
