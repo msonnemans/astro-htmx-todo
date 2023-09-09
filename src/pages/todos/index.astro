@@ -1,0 +1,29 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Todo from "@components/Todo.astro";
+import Hx from "@components/Hx.astro";
+import on from "src/on";
+
+let todos = [{ id: "1", task: "Explore Astro", completed: false }];
+
+on.post(Astro, (data) => {
+  const task = data.get("task");
+  if (task) {
+    todos = [...todos, { id: "2", task: task.toString(), completed: false }];
+  }
+});
+---
+
+<Hx post>
+  {todos.map((item) => <Todo {...item} />)}
+</Hx>
+
+<Layout>
+  <a href="/">back</a>
+  <ul id="todos">
+    {todos.map((item) => <Todo {...item} />)}
+  </ul>
+  <form hx-post="/todos" hx-target="#todos">
+    <input type="text" name="task" /><button type="submit">Add</button>
+  </form>
+</Layout>

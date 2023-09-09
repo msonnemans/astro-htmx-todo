@@ -1,0 +1,14 @@
+---
+interface Props {
+  get?: boolean;
+  post?: boolean;
+}
+
+const { get, post } = Astro.props
+
+const onGet = Astro.request.method == "GET" && get
+const onPost = Astro.request.method == "POST" && post
+---
+
+{onGet || onPost ? <slot/> : <></>}
+

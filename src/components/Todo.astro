@@ -8,15 +8,8 @@ interface Props {
 const { id, task, completed } = Astro.props;
 ---
 
-<li id={"todo-" + id}>
-  <input
-    hx-patch={"/todos/" + id}
-    hx-target={"#todo-" + id}
-    hx-swap="outerHTML"
-    name="completed"
-    type="checkbox"
-    checked={completed}
-  />
+<li hx-patch={"/todos/" + id} hx-swap="outerHTML">
+  <input name="completed" type="checkbox" checked={completed} />
   <input type="text" name="task" value={task} />
   <button>Delete</button>
 </li>
